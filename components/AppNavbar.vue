@@ -8,15 +8,14 @@ const appConfig = useAppConfig()
     <!-- Navigation -->
     <div class="text-gray-700 dark:text-gray-200">
       <NuxtLink
-        v-for="link of navigation"
+        v-for="link of navigation.filter(link => link.type === 'static')"
         :key="link._path"
         :to="link._path"
         active-class="font-bold"
         class="mr-6"
       >
-        {{ link.title }} {{ link.category }}
+        {{ link.title }}
       </NuxtLink>
-      <pre>{{ type }}</pre>
     </div>
     <!-- Social icons & Color Mode -->
     <div class="space-x-3 transition text-gray-500">
