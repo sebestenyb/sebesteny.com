@@ -40,7 +40,7 @@ jobs:
       - name: Identify package manager
         id: pkgman
         run: |
-          cache=`[ -f "//pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "//package-lock.json" ] && echo "npm" || ([ -f "//yarn.lock" ] && echo "yarn" || echo ""))`
+          cache=`[ -f "pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "package-lock.json" ] && echo "npm" || ([ -f "yarn.lock" ] && echo "yarn" || echo ""))`
           package_manager=`[ ! -z "$cache" ] && echo "$cache" || echo "pnpm"`
           echo "cache=$cache" >> $GITHUB_OUTPUT
           echo "package_manager=$package_manager" >> $GITHUB_OUTPUT
@@ -59,12 +59,9 @@ jobs:
 
       - name: Install dependencies
         run: ${{ steps.pkgman.outputs.package_manager }} install
-        env:
-          PNPM_HOME: "/home/runner/setup-pnpm"
+
       - name: Install @nuxthq/studio
         run: ${{ steps.pkgman.outputs.package_manager }} add -D @nuxthq/studio
-        env:
-          PNPM_HOME: "/home/runner/setup-pnpm"
 
       - name: Create .nuxtrc
         run: echo $'\nautoImport=true\nmodules[]=@nuxthq/studio' >> .nuxtrc
