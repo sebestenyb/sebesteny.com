@@ -14,7 +14,7 @@ const appConfig = useAppConfig()
         active-class="font-bold"
         class="mr-6"
       >
-        {{ link.title }}
+        {{ link.title }} {{ link.category }}
       </NuxtLink>
       <pre>{{ type }}</pre>
     </div>
