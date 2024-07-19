@@ -8,7 +8,7 @@ const appConfig = useAppConfig()
     <!-- Navigation -->
     <div class="text-gray-700 dark:text-gray-200">
       <NuxtLink
-        v-for="link of navigation.filter(link => link.type === 'static')"
+        v-for="link of navigation.filter(link => link.category === 'static')"
         :key="link._path"
         :to="link._path"
         active-class="font-bold"
