@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { navigation } = useContent()
+const { navigation, type } = useContent()
 const appConfig = useAppConfig()
 </script>
 
@@ -14,8 +14,9 @@ const appConfig = useAppConfig()
         active-class="font-bold"
         class="mr-6"
       >
-        {{ link.title }} ({{  link.type }})
+        {{ link.title }}
       </NuxtLink>
+      <pre>{{ type }}</pre>
     </div>
     <!-- Social icons & Color Mode -->
     <div class="space-x-3 transition text-gray-500">
