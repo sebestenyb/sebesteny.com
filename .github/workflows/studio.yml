@@ -59,10 +59,13 @@ jobs:
 
       - name: Install dependencies
         run: ${{ steps.pkgman.outputs.package_manager }} install
-
+        env:
+          PNPM_HOME: "/home/runner/work/"
       - name: Install @nuxthq/studio
         run: ${{ steps.pkgman.outputs.package_manager }} add -D @nuxthq/studio
-
+        env:
+          PNPM_HOME: "/home/runner/work/"
+          
       - name: Create .nuxtrc
         run: echo $'\nautoImport=true\nmodules[]=@nuxthq/studio' >> .nuxtrc
 
